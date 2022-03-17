@@ -18,68 +18,61 @@ function getTickets(data) {
             return response.json();
         })
         .then((data) => {
-            console.log(data.tickets)
+            // console.log(data.tickets)
             getAlltickets(data.tickets)
         });
 }
 
-function filter(data) {
-    // let arr = [];
-    // for (let i = 0; i < data.length; i++) {
-    //     let val = data[i].price;
-    //     arr.push(val);
-    //     arr.sort(function(a, b) {
-    //         return a - b;
-    //     });
-    // }
-    // // return arr.slice(0, 5);
-    // return arr
+function compare(a, b) {
+    const genreA = a.price
+    const genreB = b.price
 
-    data.sort((prev, next) => prev.price - next.price);
-}
-
-function filterDuration(data) {
-    let arr = [];
-    var duration = []
-    for (let i = 0; i < data.length; i++) {
-        let val = data[i].segments;
-        arr.push(val);
-        val.forEach(element => {
-            duration.push(element.duration)
-
-        });
-        duration.sort(function(a, b) {
-            return a - b;
-        });
+    let comparison = 0;
+    if (genreA > genreB) {
+        comparison = 1;
+    } else if (genreA < genreB) {
+        comparison = -1;
     }
-    return duration.slice(0, 5);
+    return comparison;
 }
 
 
-// function getFilteredPins(data) {
-//     var filterData = data.
-//     filter(function(filterElem) {
-//         return checkHousingType(filterElem) && checkPrice(filterElem) &&
-//             checkRoom(filterElem) && checkGuests(filterElem) && checkFeatures(filterElem);
-//     });
-//     return filterData.slice(MIN_ARRAY_LIMIT, MAX_ARRAY_LIMIT);
-// }
+function compares(a, b) {
+    const genreA = a.duration
+    const genreB = b.duration
+
+    let comparison = 0;
+    if (genreA > genreB) {
+        comparison = 1;
+    } else if (genreA < genreB) {
+        comparison = -1;
+    }
+    return comparison;
+}
 
 
 function getFilteredPins(data) {
-    var filterData = data.
-    filter(function(elem, index, arr) {
-        return filter(arr)
-    });
-    return filterData.slice(0, 5);
+    // return dataArr = data.forEach(element => {
+    //     element.segments.forEach(elem => {
+    //         console.log(Math.min(elem.duration))
+    //     })
+    // });
+    const elemArr = []
+    for (let i = 0; i < data.length; i++) {
+        elemArr.push(data[i].segments);
+    }
+
+    // for (let y = 0; y < elemArr.length; y++) {
+    //     const comp = elemArr;
+    //     console.log(comp)
+    // }
+
+    console.log(elemArr)
 }
 
+
+
 function getAlltickets(data) {
-    window.data = data;
-    window.filtered = filter(data);
-    console.log(filtered)
-        // window.filteredDur = filterDuration(data);
-        // console.log(filteredDur);
-        // window.filteredPins = getFilteredPins(data)
-        // console.log(filteredPins)
+    const filterPriceArr = data.sort(compare).slice(0, 5)
+    console.log(getFilteredPins(data));
 }
