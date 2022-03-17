@@ -5,28 +5,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style-min.css">
     <title>Aviasales</title>
 </head>
+
 <body>
     <main class="page-main">
         <h1 class="visually-hidden">Поиск билетов</h1>
-        <a class="logo" href="index.html"><img src="" alt="logo"></a>
+        <a class="logo" href="index.html"><img src="img/logo.png" alt="logo" width="60" height="60"></a>
         <section class="search-ticket">
             <div class="search-filter">
-                <h2 class="search-filter-title">Количество пересадок</h2>
-                <input id="all" type="checkbox">
-                <label for="all">Все</label>
-                <input id="no-transfer " type="checkbox" >
-                <label for="no-transfer">Без пересадок</label>
-                <input id="1-transfer " type="checkbox" >
-                <label for="1-transfer">1 пересадка</label>
-                <input id="2-transfer " type="checkbox" >
-                <label for="3-transfer">2 пересадка</label>
-                <input id="3-transfer " type="checkbox" >
-                <label for="3-transfer">2 пересадка</label>
+                <div class="search-checkbox-wrapper">
+                    <h2 class="search-filter-title">Количество пересадок</h2>
+                    <input class="filter-input visually-hidden" id="all" type="checkbox">
+                    <label class="filter-label" for="all">Все</label>
+                    <input class="filter-input visually-hidden" id="no-transfer" type="checkbox">
+                    <label class="filter-label" for="no-transfer">Без пересадок</label>
+                    <input class="filter-input visually-hidden" id="1-transfer" type="checkbox">
+                    <label class="filter-label" for="1-transfer">1 пересадка</label>
+                    <input class="filter-input visually-hidden" id="2-transfer" type="checkbox">
+                    <label class="filter-label" for="2-transfer">2 пересадка</label>
+                    <input class="filter-input visually-hidden" id="3-transfer" type="checkbox">
+                    <label class="filter-label" for="3-transfer">3 пересадка</label>
+                </div>
             </div>
+            <div class="ticket-list-wrapper">
+                <form class="ticket-filter">
+                    <input class="ticket-filter-radio visually-hidden" type="radio" id="cheap" value="cheap" name="ticket" checked>
+                    <label class="ticket-label-radio" for="cheap">самый дешевый</label>
+                    <input class="ticket-filter-radio visually-hidden" type="radio" id="fastest" value="fastest" name="ticket">
+                    <label class="ticket-label-radio" for="fastest">самый быстрый</label>
+                </form>
+                <ul class="ticket-list">
+                    <li class="ticket-item">
+                        <div class="price-logo">
+                            <p class="price"> 13 400 Р</p>
+                            <img class="ticket-logo" src=" http://pics.avs.io/99/36/SU.png" alt="логотип перевозчика">
+                        </div>
+                        <div class="item">
+                            <div class="ticket-item-container">
+                                <div class="ticket-item-wrapper">
+                                    <div class="ticket-block ticket-destination">MOW – HKT</div>
+                                    <div class="ticket-block ticket-path">в пути</div>
+                                    <div class="ticket-block ticket-transfer-sum">2 пересадки</div>
+                                </div>
+                            </div>
+                            <div class="ticket-item-container">
+                                <div class="ticket-item-wrapper-2">
+                                    <div class="ticket-block ticket-time">10:45 – 08:00</div>
+                                    <div class="ticket-block ticket-path-time">21ч 15м</div>
+                                    <div class="ticket-block ticket-transfer-name">HKG, JNB</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ticket-item-container">
+                                <div class="ticket-item-wrapper">
+                                    <div class="ticket-block ticket-destination">MOW – HKT</div>
+                                    <div class="ticket-block ticket-path">в пути</div>
+                                    <div class="ticket-block ticket-transfer-sum">2 пересадки</div>
+                                </div>
+                            </div>
+                            <div class="ticket-item-container">
+                                <div class="ticket-item-wrapper-2">
+                                    <div class="ticket-block ticket-time">10:45 – 08:00</div>
+                                    <div class="ticket-block ticket-path-time">21ч 15м</div>
+                                    <div class="ticket-block ticket-transfer-name">HKG, JNB</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+                <button class="button-more">показать еще 5 билетов!</button>
+            </div>
+
+
         </section>
     </main>
+    <script src="js/backend.js"></script>
 </body>
+
 </html>
