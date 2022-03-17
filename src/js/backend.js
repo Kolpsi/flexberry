@@ -51,28 +51,22 @@ function compares(a, b) {
 }
 
 
-function getFilteredPins(data) {
-    // return dataArr = data.forEach(element => {
-    //     element.segments.forEach(elem => {
-    //         console.log(Math.min(elem.duration))
-    //     })
-    // });
-    const elemArr = []
-    for (let i = 0; i < data.length; i++) {
-        elemArr.push(data[i].segments);
-    }
+// function getFilteredPins(data) {
+//     for (let i = 0; i < data.length; i++) {
 
-    // for (let y = 0; y < elemArr.length; y++) {
-    //     const comp = elemArr;
-    //     console.log(comp)
-    // }
+//         const element = data[i].segments;
+//         element.forEach(element => {
+//             let dur = []
+//             dur.push(element.duration)
+//         });
+//         console.log(element)
+//     }
 
-    console.log(elemArr)
-}
+// }
 
 
 
 function getAlltickets(data) {
     const filterPriceArr = data.sort(compare).slice(0, 5)
-    console.log(getFilteredPins(data));
+    getFilteredPins(data);
 }
