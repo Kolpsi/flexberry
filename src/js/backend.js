@@ -79,7 +79,9 @@ function render(events) {
         ticketPathTime2 = ticketItem.querySelector('.ticket-path-time-2'),
         ticketTransferNamer2 = ticketItem.querySelector('.ticket-transfer-name-2'),
         finishTime = ticketItem.querySelector('.finish-time'),
+        finishTime2 = ticketItem.querySelector('.finish-time-2'),
         startTime = ticketItem.querySelector('.start-span'),
+        startTime2 = ticketItem.querySelector('.start-span-2'),
         price = ticketItem.querySelector('.price'),
 
         ticketLogo = ticketItem.querySelector('.ticket-logo'),
@@ -89,25 +91,39 @@ function render(events) {
         const segments1 = events.segments[0]
         const segments2 = events.segments[1]
 
-
-
-        if (segments1.stops.length == 0) { var peres = 'без пересадок' } else if (segments1.stops.length == 1) { var peres = '1 пересадка' } else { var peres = '2 пересадки' }
         ticketDestination.innerHTML = segments1.origin + ' - ' + segments1.destination;
         ticketDestination2.innerHTML = segments2.origin + ' - ' + segments2.destination;
         ticketLogo.src = `http://pics.avs.io/99/36/${events.carrier}.png`;
         price.innerHTML = events.price + ' P';
-        ticketTransferum.innerHTML = peres;
+        ticketTransferum.innerHTML = getTransfers(segments1.stops);
         finishTime.innerHTML = getDate(segments1.date, segments1.duration);
         startTime.innerHTML = getDate(segments1.date);
+        finishTime2.innerHTML = getDate(segments2.date, segments2.duration);
+        startTime2.innerHTML = getDate(segments2.date);
         ticketPathTime.innerHTML = getTimeFromMins(segments1.duration)
         ticketPathTime2.innerHTML = getTimeFromMins(segments2.duration)
         ticketTransferNamer.innerHTML = segments1.stops
         ticketTransferNamer2.innerHTML = segments2.stops
+        ticketTransferum2.innerHTML = getTransfers(segments2.stops);
 
         return event;
     } else {
         return null;
     }
+}
+
+function getTransfers(array) {
+    let transfer
+    if (array.length == 0) {
+        transfer = 'без пересадок'
+    } else if (array.length == 1) {
+        transfer = '1 пересадка'
+    } else if (array.length == 2) {
+        transfer = '2 пересадки'
+    } else {
+        transfer = "3 пересадки"
+    }
+    return transfer
 }
 
 function remove() {
